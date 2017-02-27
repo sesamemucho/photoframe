@@ -27,7 +27,8 @@ lint:
 	flake8 photoframe test
 
 test:
-	py.test
+	(PATH=$${PATH}:$$(pwd)/test; py.test -v -s)
+#	py.test -v -s
 
 test-all:
 	tox

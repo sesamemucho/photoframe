@@ -7,7 +7,6 @@ import time
 
 from photoframe import shared
 
-
 def worker(q, cmd_obj, publish_func):
     need_command = True
     cmd_obj.hello()
@@ -18,7 +17,7 @@ def worker(q, cmd_obj, publish_func):
         if cmd == "exit":
             break
 
-        print("Processing {} with delay of {} seconds".format(cmd, delay))
+        #print("Processing {} with delay of {} seconds".format(cmd, delay))
         need_command = True
 
         # Check it again
@@ -27,12 +26,11 @@ def worker(q, cmd_obj, publish_func):
             try:
                 cmd, delay = q.get_nowait()
                 need_command = False
-                print("Got command \"{}\" during sleep".format(cmd))
+                #print("Got command \"{}\" during sleep".format(cmd))
             except queue.Empty:
                 time.sleep(0.1)
                 timer -= 0.1
 
-        print("Finished delay")
         cmd_obj.execute(cmd)
         publish_func(shared.LOG_TOPIC, "Done with stuff", 0, False)
 
@@ -56,18 +54,18 @@ class MqttClient(mqtt.Client):
         print("on_subscribe: mid {}  qos {}".format(mid, granted_qos))
 
     def on_message(self, mqclient, userdata, message):
-        print("Received message '" + str(message.payload) + "' on topic '"
-            + message.topic + "' with QoS " + str(message.qos))
+        #print("Received message '" + str(message.payload) + "' on topic '"
+        #    + message.topic + "' with QoS " + str(message.qos))
         (cmd, delay) = message.payload.split(b",")
         delay = int(delay)
         cmd = str(cmd, encoding='utf-8', errors='strict')
-        print("cmd is {}, delay is {}".format(cmd, delay))
+        #print("cmd is {}, delay is {}".format(cmd, delay))
         if (delay < 0) or (delay > 3600):
             print("Delay {} is out of range (0, 3600)".format(delay))
         elif not self.cmds.is_valid_command(cmd):
             print("Command {} is not a valid command".format(cmd))
         else:
-            print("Processing cmd {}".format(cmd))
+            #print("Processing cmd {}".format(cmd))
             try:
                 self.cmd_queue.put_nowait((cmd, delay))
             except queue.Full:
