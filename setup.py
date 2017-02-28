@@ -32,7 +32,7 @@ setup(
     packages=[
         'photoframe',
     ],
-    scripts = ['bin/photoframe'],
+    scripts=['bin/photoframe'],
     package_dir={'photoframe': 'photoframe'},
     include_package_data=True,
     install_requires=[

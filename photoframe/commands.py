@@ -4,6 +4,7 @@ This module handles the execution of any shell commands.
 
 VALID_COMMANDS = ('wake', 'sleep', 'id', 'weather', 'photo', 'exit')
 
+
 class PhotoFrameCommands(object):
 
     def is_valid_command(self, cmd):
@@ -33,4 +34,3 @@ class PhotoFrameCommands(object):
 
     def exit(self):
         print("Performed exit command")
-
