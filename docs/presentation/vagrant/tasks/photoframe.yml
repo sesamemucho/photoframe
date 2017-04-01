@@ -1,0 +1,18 @@
+---
+- name: install apache
+  apt: name=python3-pip state=present
+
+- name: acquire source via the tarball
+  become: yes
+  unarchive:
+    src: photoframe-0.1.0.tar.gz
+    dest: "/var/tmp/"
+
+- name: install
+  become: yes
+  pip:
+    name: "."
+    editable: yes
+    chdir: "/var/tmp/photoframe-0.1.0"
+    state: present
+

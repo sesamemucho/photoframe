@@ -1,0 +1,34 @@
+---
+- name: install mosquitto
+  apt: name=mosquitto state=present
+
+- name: install mosquitto-clients
+  apt: name=mosquitto-clients state=present
+
+- name: install python3-pip
+  apt: name=python3-pip state=present
+
+- name: install paho-mqtt Python mqtt module
+  pip: executable=pip3 name=paho-mqtt state=present
+
+- name: Add 'all' logging to mosquitto.conf file
+  lineinfile:
+    dest: /etc/mosquitto/conf.d/mosquitto.conf
+    state: present
+    insertafter: EOF
+    line: 'log_type all'
+
+# - name: Set up mosquitto broker configuration file
+#   blockinfile:
+#     create: yes
+#     dest: /etc/mosquitto/conf.d/mosquitto.conf
+#     block: |
+#       log_type all
+
+
+- name: Start the MQTT broker
+  systemd:
+    name: mosquitto
+    enabled: yes
+    state: started
+    masked: no
