@@ -76,7 +76,8 @@ class MqttClient(mqtt.Client):
                 self.do_run = False
 
     def on_log(self, mqclient, userdata, level, buf):
-        print("log: \"{}\"".format(buf))
+        # print("log: \"{}\"".format(buf))
+        pass
 
     def run(self):
         self.connect(shared.MQTT_BROKER)

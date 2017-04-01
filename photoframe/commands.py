@@ -6,6 +6,12 @@ VALID_COMMANDS = ('wake', 'sleep', 'id', 'weather', 'photo', 'exit')
 
 
 class PhotoFrameCommands(object):
+    def __init__(self):
+        self.fehpid = None
+        self.chrompid = None
+
+    def initialize_processes(self):
+        pass
 
     def is_valid_command(self, cmd):
         return cmd in VALID_COMMANDS

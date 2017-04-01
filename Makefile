@@ -37,21 +37,21 @@ coverage:
 	coverage run --source photoframe setup.py test
 	coverage report -m
 	coverage html
-	open htmlcov/index.html
+	xdg-open htmlcov/index.html
 
 docs:
 	rm -f docs/photoframe.rst
 	rm -f docs/modules.rst
-	sphinx-apidoc -o docs/ photoframe
+	sphinx-apidoc -o docs/modules photoframe
 	$(MAKE) -C docs clean
 	$(MAKE) -C docs html
-	open docs/_build/html/index.html
+#	xdg-open docs/_build/html/index.html
 
 release: clean
-	python setup.py sdist upload
-	python setup.py bdist_wheel upload
+	python setup.py sdist 
+	python setup.py bdist_wheel
 
 sdist: clean
 	python setup.py sdist
-	python setup.py bdist_wheel upload
+	python setup.py bdist_wheel
 	ls -l dist

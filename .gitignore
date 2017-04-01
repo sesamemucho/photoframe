@@ -41,3 +41,7 @@ output/*/index.html
 
 # Sphinx
 docs/_build
+
+docs/presentation/vagrant/photoframe-0.1.0.tar.gz
+docs/presentation/presentation.html
+docs/modules
