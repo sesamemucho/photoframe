@@ -1,0 +1,8 @@
+---
+- name: apply common configuration to all nodes
+  hosts: all
+  become: true
+  remote_user: root
+  roles:
+    - grumpydog.photoframe
+    - apache

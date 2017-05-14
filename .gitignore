@@ -42,6 +42,9 @@ output/*/index.html
 # Sphinx
 docs/_build
 
-docs/presentation/vagrant/photoframe-0.1.0.tar.gz
-docs/presentation/presentation.html
+ansible/grumpydog.photoframe/files/photoframe-*.tar.gz
 docs/modules
+
+.vagrant
+
+index.html
