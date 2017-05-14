@@ -1,0 +1,5 @@
+---
+# tasks file for grumpydog.photoframe
+- include: deps.yml
+- include: photof.yml ansible_python_interpreter=/usr/bin/python3
+- include: mosquitto.yml

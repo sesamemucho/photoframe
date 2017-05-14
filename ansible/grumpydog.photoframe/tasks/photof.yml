@@ -1,0 +1,15 @@
+---
+- name: acquire source via the tarball
+  become: yes
+  unarchive:
+    src: photoframe-{{ photoframe_version }}.tar.gz
+    dest: "/var/tmp/"
+
+- name: install
+  become: yes
+  pip:
+    name: "."
+    editable: yes
+    chdir: "/var/tmp/photoframe-{{ photoframe_version }}"
+    state: present
+

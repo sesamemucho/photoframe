@@ -1,0 +1,9 @@
+---
+- name: update apt cache
+  apt: update_cache=yes
+
+- name: install python3
+  apt: name=python3 state=present
+
+- name: install Python3 pip
+  apt: name=python3-pip state=present
