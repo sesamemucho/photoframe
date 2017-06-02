@@ -48,3 +48,6 @@ docs/modules
 .vagrant
 
 index.html
+
+*.log
+*.retry

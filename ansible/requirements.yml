@@ -1,0 +1,10 @@
+---
+
+- src: mikolak.raspi-config
+- src: nerab.rsyslog-patch
+- src: knopki.locale
+- src: Stouts.hostname
+- src: Stouts.timezone
+
+#- src: https://github.com/rhietala/raspberry-ansible/tree/master/roles/raspbian_bootstrap
+#- src: https://github.com/rhietala/raspberry-ansible/tree/master/roles/firewall
